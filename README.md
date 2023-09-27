@@ -1,1 +1,1 @@
-# Faulty-Finder
+# Fault-Finder
