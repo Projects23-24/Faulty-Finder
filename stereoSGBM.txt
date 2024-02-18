@@ -1,0 +1,24 @@
+StereoSGBM.create
+cv.StereoSGBM_create(minDisparity=0, numDisparities=16, blockSize=3, P1=0, P2=0, disp12MaxDiff=0, preFilterCap=0, uniquenessRatio=0, speckleWindowSize=0, speckleRange=0, mode=cv.StereoSGBM_MODE_SGBM) -> retval - creates a StereoSGBM object to compute disparity map from stereo pair
+
+Inputs:
+
+minDisparity: int, minimum possible disparity value (default is 0)
+numDisparities: int, the disparity search range. The maximum disparity minus minimum disparity. It's always greater than 0 and should be divisible by 16 (default is 16)
+blockSize: int, the linear size of the blocks compared by the algorithm when computing disparity (default is 3)
+P1: int, penalty on the disparity change by plus or minus 1 between neighbor pixels (default is 0)
+P2: int, penalty on the disparity change by more than 1 between neighbor pixels. The algorithm requires P2 > P1 (default is 0)
+disp12MaxDiff: int, maximum allowed difference (in integer pixel units) in the left-right disparity check (default is 0)
+preFilterCap: int, truncates disparity values falling outside of [-preFilterCap, preFilterCap] range (default is 0)
+uniquenessRatio: int, margin in percentage by which the best computed cost function value should "win" the second best value to consider the found match correct. Helps to remove false matches (default is 0)
+speckleWindowSize: int, maximum size of smooth disparity regions to consider their noise speckles and invalidate (default is 0)
+speckleRange: int, maximum disparity variation within the specified window (default is 0)
+mode: int, sets the algorithm mode.
+cv.StereoSGBM_MODE_SGBM: Basic full-scale 2-pass dynamic programming algorithm. Most accurate but slowest.
+cv.StereoSGBM_MODE_HH: Uses Hirschmuller algorithm (HH). Faster than SGBM with higher memory requirement.
+cv.StereoSGBM_MODE_SGBM_3WAY: Three-way optimized version of SGBM. Faster, less memory, possibly less accurate.
+cv.StereoSGBM_MODE_HH4: SIMD optimized version of HH. Balances speed and accuracy with hardware acceleration.
+cv.StereoSGBM_MODE_QUARTER: Outputs disparity map scaled down by a factor of 4 in height and width. Fastest with lowest resolution.
+Outputs:
+
+retval: StereoSGBM object, instance of StereoSGBM
